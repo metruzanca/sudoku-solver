@@ -1,4 +1,3 @@
-import { getHighlighted } from "lib"
 import React, { useEffect, useRef, useState } from "react"
 import { CellWrapper } from "styles"
 
@@ -15,28 +14,25 @@ export const Cell: React.FC<Props> = ({
   highlight,
   onHover,
 }) => {
-  const cell = useRef<HTMLDivElement>(null)
+  const cellRef = useRef<HTMLDivElement>(null)
   const [hEdge] = useState<boolean>((index + 1) % 3 === 0)
   const [vEdge] = useState<boolean>((index + 1) % (9 * 3) === 0)
 
-  // function mouseEnter(){
-  //   console.log(getHighlighted(index));
-  // }
-
   useEffect(() => {
-    if(cell.current){
-      cell.current.addEventListener("mouseenter", onHover)
+    const cell = cellRef.current
+    if(cell){
+      cell.addEventListener("mouseenter", onHover)
     }
     return () => {
-      if(cell.current){
-        cell.current.addEventListener("mouseenter", onHover)
+      if(cell){
+        cell.addEventListener("mouseenter", onHover)
       }
     }
-  }, [index])
+  }, [index, onHover])
 
   return (
     <CellWrapper
-      ref={cell}
+      ref={cellRef}
       horrizontalEdge={hEdge}
       verticalEdge={vEdge}
       highlight={highlight}

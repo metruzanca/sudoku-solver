@@ -26,8 +26,8 @@ function useHighlight(): UseHighlight {
   ]
 }
 
-export const App: React.FC<Props> = ({}) => {
-  const [data, setData] = useState(new Array(81).fill(null))
+export const App: React.FC<Props> = () => {
+  const [data, ] = useState(new Array(81).fill(null))
   const [highlighted, setHighlighted] = useHighlight()
 
   return (
