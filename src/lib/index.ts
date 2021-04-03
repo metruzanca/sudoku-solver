@@ -9,6 +9,8 @@ export function getHighlighted(index: number){
   // console.log("Values in column: " + getNumbersInColumn(col));
   // console.log("Values in square: " + getNumbersInSquare(square));
   const set = new Set<number>()
+  // TODO Memoize getNumbersInRow, getNumbersInColumn & getNumbersInSquare
+  // And potentially getSquare but idk, would need to benchmark.
   getNumbersInRow(row).forEach(item => set.add(item))
   getNumbersInColumn(col).forEach(item => set.add(item))
   getNumbersInSquare(square).forEach(item => set.add(item))
