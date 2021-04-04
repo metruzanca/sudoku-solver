@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react"
+import { sudokuContext } from "contexts"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { CellWrapper } from "styles"
 
 type Props = {
@@ -14,9 +15,10 @@ export const Cell: React.FC<Props> = ({
   highlight,
   onHover,
 }) => {
-  const cellRef = useRef<HTMLDivElement>(null)
+  const cellRef = useRef<HTMLInputElement>(null)
   const [hEdge] = useState<boolean>((index + 1) % 3 === 0)
   const [vEdge] = useState<boolean>((index + 1) % (9 * 3) === 0)
+  const {setAtIndex} = useContext(sudokuContext)
 
   useEffect(() => {
     const cell = cellRef.current
@@ -30,14 +32,21 @@ export const Cell: React.FC<Props> = ({
     }
   }, [index, onHover])
 
+
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const value = parseInt(e.currentTarget.value)
+    console.log("changing to " + value);
+    
+    setAtIndex(index, value)
+  }
   return (
     <CellWrapper
       ref={cellRef}
       horrizontalEdge={hEdge}
       verticalEdge={vEdge}
       highlight={highlight}
-    >
-      {index}
-    </CellWrapper>
+      value={value}
+      onInput={handleInput}
+    />
   )
 }

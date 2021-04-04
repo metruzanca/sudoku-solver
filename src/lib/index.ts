@@ -15,7 +15,7 @@ export function getHighlighted(index: number){
   return Array.from(set.values())
 }
 
-class Sudoku{
+export class Sudoku{
   /**
    * @returns 0 indexed row number
    */
@@ -64,5 +64,10 @@ class Sudoku{
    */
   @memoize() static getNumbersInRow(row: number) {
     return Array.from({length: 9}, (_, i) => 9 * row + i)
+  }
+
+  //@memoize()
+  static valid(index: number, value: number, board: number[]) {
+
   }
 }

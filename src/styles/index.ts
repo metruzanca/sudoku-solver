@@ -38,10 +38,13 @@ interface CellWrapperProps {
   highlight: boolean
 }
 
-export const CellWrapper = styled.div<CellWrapperProps>`
+export const CellWrapper = styled.input<CellWrapperProps>`
   height: 2em;
   width: 2em;
-  
+  background-color: var(--bgColor1);
+  color: var(--textColor);
+  text-align: center;
+
   ${p => p.horrizontalEdge && css`
     margin-right: 1em;
   `}

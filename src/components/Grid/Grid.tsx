@@ -1,21 +1,21 @@
-import { Cell, Highlighted } from "components"
-import React from "react"
+import { Cell } from "components"
+import React, { useContext } from "react"
 import {v4 as uuid} from 'uuid'
 import { GridWrapper } from "styles"
+import { sudokuContext } from "contexts"
 
 
-interface Props extends Highlighted {
-  data: number[] // probs change number to a better data type
-}
+interface Props {}
 
-export const Grid: React.FC<Props> = ({
-  data,
-  highlighted,
-  setHighlighted,
-}) => {  
+export const Grid: React.FC<Props> = () => {
+  const {
+    board,
+    highlighted,
+    setHighlighted,
+  } = useContext(sudokuContext)
   return (
     <GridWrapper>
-      {data.map((cell, idx) => 
+      {board.map((cell, idx) => 
         <Cell
           index={idx}
           value={cell}
