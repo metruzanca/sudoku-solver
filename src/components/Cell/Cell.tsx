@@ -48,6 +48,7 @@ export const Cell: React.FC<Props> = ({
   return (
     <CellWrapper
       ref={cellRef}
+      inputMode="numeric"
       horrizontalEdge={hEdge}
       verticalEdge={vEdge}
       editable={cell.editable}
