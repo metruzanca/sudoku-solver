@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     --bgColor1: #1C1E26;
     --bgColor2: #3C4347;
     --textColor: #90A4AE;
+    --textColor2: #9569BE;
     --highlight: #2b2d39;
     --borders: #B4435C;
     
@@ -14,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
   #root {
     display: grid;
     place-items: center;
+    font-family: sans-serif;
   }
 `
 
@@ -36,6 +38,7 @@ interface CellWrapperProps {
   verticalEdge: boolean
   // For hover on cells
   highlight: boolean
+  editable: boolean
 }
 
 export const CellWrapper = styled.input<CellWrapperProps>`
@@ -54,6 +57,10 @@ export const CellWrapper = styled.input<CellWrapperProps>`
 
   ${p => p.highlight && css`
     background-color: var(--highlight);
+  `}
+
+  ${p => !p.editable && css`
+    color: var(--textColor2);
   `}
 
   // Temporary

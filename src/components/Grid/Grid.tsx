@@ -18,7 +18,7 @@ export const Grid: React.FC<Props> = () => {
       {board.map((cell, idx) => 
         <Cell
           index={idx}
-          value={cell}
+          cell={cell}
           key={uuid()}
           onHover={() => setHighlighted(idx)}
           highlight={highlighted[idx]}
